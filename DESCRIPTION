@@ -1,0 +1,24 @@
+Package: MSM
+Type: Package
+Title: Forecasting Volatility With Markov Switching Multifractal Model
+Version: 0.1.0
+Date: 2017-03-25
+Author: Waleem Alausa
+Maintainer: Waleem Alausa <alausa.babs@gmail.com>
+Description: It fits Markov Switching Multifractal Volatility model
+    to log returns, and provides volatility forecast based on the
+    fitted model. It can also be used to decompose returns into multiple
+    volatility components/ volatility clusters.
+Depends:
+    R (>= 3.1),
+    nloptr,
+    reshape2,
+    ggplot2
+Imports:
+    Rcpp (>= 0.12.7),
+    stats
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+LinkingTo: Rcpp, RcppArmadillo
+RoxygenNote: 5.0.1
