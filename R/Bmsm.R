@@ -1,4 +1,5 @@
 #
+#
 Bmsm <- function(ret, kbar =1, n = 252, para0=NULL, s.err = T){
 
   bmsm.check <- Bmsm_parameter_check(ret, kbar, para0, n)
