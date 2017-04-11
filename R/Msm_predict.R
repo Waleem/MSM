@@ -42,8 +42,9 @@ Msm_predict <- function(g.m, sigma, n, P, A, h=NULL){
 
   }else{
 
-    vol    <- sigma*(P %*% t(g.m))
+    #vol    <- sigma*(P %*% t(g.m))
     vol.sq <- sigma^2*(P %*% t(g.m^2))
+    vol    <- sqrt(vol.sq)
 
   }
 
