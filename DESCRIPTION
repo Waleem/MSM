@@ -22,7 +22,8 @@ Depends:
     colorspace
 Imports:
     Rcpp (>= 0.12.7),
-    stats
+    stats,
+    ggplot2
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
