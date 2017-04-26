@@ -1,4 +1,6 @@
-#' Calculates standard error for MSM model.
+#' Standard Error for \code{\link{Msm}} Model.
+#'
+#' Calculates standard error for \code{\link{Msm}} model.
 #'
 #' @param para is a vector of parameters returned by \code{\link{Msm}}.
 #' @param kbar is the number of frequency components in the \code{\link{Msm}}(k) model.
@@ -7,6 +9,8 @@
 #' @param lag is the number of lags.
 #'
 #' @return a list of standard error ingredients.
+#'
+#' @export
 Msm_std_err <- function(para, kbar, ret, n.vol,lag=0){
 
   if (kbar==1){

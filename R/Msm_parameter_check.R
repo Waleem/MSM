@@ -1,6 +1,6 @@
-#' Performs boundary checks on Msm model parameters.
+#' Boundary Checks on \code{\link{Msm}} Model Parameters.
 #'
-#' Performs boundary checks on Msm model parameter values.
+#' Performs boundary checks on \code{\link{Msm}} model parameter values.
 #'
 #' @param dat is a column matrix/ dataframe of returns.
 #' @param kbar is the number of frequency components in the \code{\link{Msm}}(k) model.
@@ -11,15 +11,13 @@
 #' \item{kbar}{number of frequency components}
 #' \item{start.value}{is the initial parameter values passed to Msm}
 #' \item{lb}{lower bound on parameters}
-#' \item{ub}{lower bound on parameters}
-
+#' \item{ub}{upper bound on parameters}
 #'
 #' @examples
 #' data("calvet2004data")
-#' ret <- na.omit(as.matrix(dat$caret))*100
+#' ret <- na.omit(as.matrix(calvet2004data$caret))*100
 #' Msm_parameter_check (ret,2,c(1.5,10,.1,4))
 #'
-#' @export
 Msm_parameter_check <- function(dat,kbar,x0){
 
   # Check for valid dat entry:

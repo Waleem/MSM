@@ -1,4 +1,4 @@
-#' Calculates state values for MSM model.
+#' Volatility State Vector For \code{\link{Msm}} model.
 #'
 #' Calculates all possible \eqn{2^k} state values for an  \code{\link{Msm}}(k) model.
 #'
