@@ -1,6 +1,49 @@
-#
-#
-Bmsm <- function(ret, kbar =1, n = 252, para0=NULL, s.err = T){
+#' Bivariate Markov Switching Multifractal (BMSM) Model.
+#'
+#' Estimates the parameters of a bivariate MSM model for a given pair of returns.
+#'
+#' @param ret is a matrix of two returns.
+#' @param kbar is the number of frequency components in the bivariate MSM model. Default is 1.
+#' @param n is the number of trading days in a year, if data is on a daily frequency. Default is 252.
+#' If data is monthly, then set n.vol to 12. If data is quarterly, then n.vol should be 4.
+#' @param para0 is the initial parameter values for optimization,
+#' c(m01, m02, sigma1, sigma2, gamma-k, b, rho.e, labda, rho.m). Default is NULL.
+#' @param s.err =T. If True, estimates standard error. Otherwise, no standard errors are estimated.
+#' The computation of BMSM standard error is expensive. Hence, the option to skip it if not needed.
+#'
+#' @return a list consisting of:
+#' \item{LL}{sum of loglikelihood values at optimum}
+#' \item{LLs}{a vector of loglikelihood values at optimum}
+#' \item{filtered}{a matrix of filtered probabilities}
+#' \item{A}{the estimated transition matrix}
+#' \item{g.m}{the estimated state values}
+#' \item{optim.msg}{optimization message}
+#' \item{optim.convergence}{optimization convergence indicator}
+#' \item{optim.iter}{number of iterations}
+#' \item{para]}{estimated parameter vector}
+#' \item{se}{robust standard errors}
+#'
+#' @author Waleem Alausa, \email{alausa.babs@@gmail.com}
+#' @keywords Markov Switching Multifractal, volatility, volatility clustering
+#'
+#' @note Use the \code{\link{summary.bmsmmodel}} function to print summary results of the BMSM model.
+#' Use \code{\link{plot.bmsmmodel}} function to plot the fitted conditional volatilities, or plot(bmsmmodel) to plot the
+#'  fitted  conditional variance. Use \code{\link{predict.bmsmmodel}} to get the predicted conditional
+#'  variance, standard deviation, correlation and covariance.
+#'
+#' @references Calvet, L.E & Fisher, J.A (2006) Volatility comovement: a multifrequency approach
+#' (\href{http://www.sciencedirect.com/science/article/pii/S0304-4076(05)00010-2}{PubMed})
+#'
+#' @examples
+#' data("calvet2006returns")
+#' ret <- as.matrix(calvet2006returns[,2:3])*100
+#' fit <- Bmsm(ret)
+#' fit <- Bmsm(ret, kbar=2, n=252, s.err=FALSE)
+#' summary(fit)
+#' plot(fit)
+#'
+#' @export
+Bmsm <- function(ret, kbar =1, n = 252, para0=NULL, s.err = TRUE){
 
   bmsm.check <- Bmsm_parameter_check(ret, kbar, para0, n)
 
@@ -16,13 +59,13 @@ Bmsm <- function(ret, kbar =1, n = 252, para0=NULL, s.err = T){
   para2 <- x0[7:9]
 
   log <- capture.output({
-    stage1.fit <- nloptr::slsqp(para1, fn = Bmsm_stage1_likelihood,
-                                lower = lb1, upper = ub1, dat = ret, kbar = kbar, n.vol = n)
+    stage1.fit <- Rsolnp::solnp(para1, fun = Bmsm_stage1_likelihood,
+                                LB = lb1, UB = ub1, dat = ret, kbar = kbar, n.vol = n)
 
     para1 <- stage1.fit$par
 
-    stage2.fit <- nloptr::slsqp(para2, fn = Bmsm_stage2_likelihood2,
-                                lower = lb2, upper = ub2, kbar = kbar, dat = ret, para1=para1, n.vol = n)
+    stage2.fit <- Rsolnp::solnp(para2, fun = Bmsm_stage2_likelihood2,
+                                LB = lb2, UB = ub2, kbar = kbar, dat = ret, para1=para1, n.vol = n)
 
   })
 
@@ -105,7 +148,13 @@ print.summary.bmsmmodel <- function(x, ...)
 }
 
 predict.bmsmmodel <- function(object, h=NULL,...){
-  smoothed.p <- Msm_smooth_cpp(object$A,object$filtered.P)
+
+  if (!is.null(h)){
+    smoothed.p = object$filtered.P
+  } else{
+    smoothed.p <- Msm_smooth_cpp(object$A,object$filtered.P)
+  }
+
   pred       <- Bmsm_predict(smoothed.p, object$A, object$g.m, object$para, object$kbar, object$n, h)
   return(pred)
 }
