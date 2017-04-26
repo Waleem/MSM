@@ -17,7 +17,8 @@ Depends:
     ggplot2,
     plyr,
     gtable,
-    scales
+    scales,
+    munsell
 Imports:
     Rcpp (>= 0.12.7),
     stats
