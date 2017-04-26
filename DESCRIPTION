@@ -21,7 +21,8 @@ Depends:
     munsell,
     colorspace,
     lazyeval,
-    tibble
+    tibble,
+    labeling
 Imports:
     Rcpp (>= 0.12.7),
     stats,
