@@ -11,7 +11,7 @@ Description: It fits Markov Switching Multifractal Volatility model
     volatility components/ volatility clusters.
 Depends:
     R (>= 3.1),
-    nloptr,
+    Rsolnp,
     reshape2,
     ggplot2
 Imports:
