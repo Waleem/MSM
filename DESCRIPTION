@@ -15,7 +15,8 @@ Depends:
     truncnorm,
     reshape2,
     ggplot2,
-    plyr
+    plyr,
+    gtable
 Imports:
     Rcpp (>= 0.12.7),
     stats
