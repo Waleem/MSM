@@ -1,4 +1,4 @@
-#' Calculates 2-sided finite difference hessian for MSM(k) model.
+#' Finite Difference Hessian for \code{\link{Msm}}(k) model.
 #'
 #' Calculates 2-sided finite difference hessian for \code{\link{Msm}}(k) model.
 #'
@@ -9,9 +9,7 @@
 #'
 #' @return a \eqn{4 x 4} matrix of numerical hessians.
 #'
-#'
 #' @export
-
 Msm_hesssian_2_sided <-function (para, kbar, ret, n.vol){
 
   check_para <- function(x){

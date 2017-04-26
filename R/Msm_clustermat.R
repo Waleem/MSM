@@ -1,4 +1,4 @@
-#' Calculates the matrix of volatility components.
+#' Volatility State Matrix for \code{\link{Msm}}(k) model.
 #'
 #' Calculates the matrix of volatility components for \code{\link{Msm}}(k) model.
 #'
@@ -22,6 +22,8 @@ Msm_clustermat <- function(m0,kbar){
 
   M.mat <- expand.grid(m.list)
   M.mat <- M.mat[, rev(seq_len(ncol(M.mat)))]
+  #M.mat <- matrix(M.mat, nrow=2^kbar)
+  M.mat <- as.matrix(M.mat)
 
   return(M.mat)
 }

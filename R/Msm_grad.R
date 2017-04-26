@@ -1,6 +1,6 @@
-#' Calculates numerical gradient for MSM(k) model.
+#' Numerical Derivative Function for \code{\link{Msm}}(k) model.
 #'
-#' Calculates numerical gradient for \code{\link{Msm}}(k) model.
+#' Calculates the numerical derivative for \code{\link{Msm}}(k) model.
 #'
 #' @param para is a vector of parameters returned by \code{\link{Msm}}.
 #' @param kbar is the number of frequency components in the \code{\link{Msm}}(k) model.

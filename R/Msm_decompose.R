@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' data("calvet2004data")
-#' ret <- na.omit(as.matrix(dat$caret))*100
+#' ret <- na.omit(as.matrix(calvet2004data$caret))*100
 #' fit2 <- Msm(ret, kbar=2, n.vol=252, nw.lag=2)
 #' volcomp <- Msm_decompose(fit2)
 #' plot(volcomp)

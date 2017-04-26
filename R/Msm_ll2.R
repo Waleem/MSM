@@ -1,4 +1,4 @@
-#' Calculates the sum of the log-likelihood values for MSM(k) model.
+#' Sum of Log-Likelihood for \code{\link{Msm}}(k) model.
 #'
 #' Calculates the sum of the log-likelihood values for \code{\link{Msm}}(k) model.
 #'
@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' data("calvet2004data")
-#' ret <- na.omit(as.matrix(dat$caret))*100
+#' ret <- na.omit(as.matrix(calvet2004data$caret))*100
 #' Msm_ll2(c(1.556, 10.92, 0.109, 0.278*sqrt(252)), 2, ret, n.vol=252)
 #'
 #' @export

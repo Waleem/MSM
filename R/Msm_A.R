@@ -1,4 +1,4 @@
-#' Calculates transition probability matrix for MSM(k) model.
+#' Transition Probability Matrix for \code{\link{Msm}}(k) Model.
 #'
 #' Calculates transition matrix for \code{\link{Msm}}(k) model. The calculation
 #'  exploits the independence of the volatility components. Each \eqn{M_k} has its own
