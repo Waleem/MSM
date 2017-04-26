@@ -2,7 +2,7 @@
 % Please edit documentation in R/Msm_clustermat.R
 \name{Msm_clustermat}
 \alias{Msm_clustermat}
-\title{Calculates the matrix of volatility components.}
+\title{Volatility State Matrix for \code{\link{Msm}}(k) model.}
 \usage{
 Msm_clustermat(m0, kbar)
 }

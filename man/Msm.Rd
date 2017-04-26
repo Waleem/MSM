@@ -2,14 +2,14 @@
 % Please edit documentation in R/Msm.R
 \name{Msm}
 \alias{Msm}
-\title{Fits an \code{\link{Msm}}(k) model to returns.}
+\title{Univariate Markov Switching Multifractal (MSM) Model.}
 \usage{
 Msm(ret, kbar = 1, n.vol = 252, para0 = NULL, nw.lag = 0)
 }
 \arguments{
 \item{ret}{is a column matrix of returns.}
 
-\item{kbar}{is the number of frequency components in the \code{\link{Msm}}(k) model. Default is 1.}
+\item{kbar}{is the number of frequency components in the Msm(k) model. Default is 1.}
 
 \item{n.vol}{is the number of trading days in a year, if data is on a daily frequency. Default is 252.
 If data is monthly, then set n.vol to 12. If data is quarterly, then n.vol should be 4.}
@@ -32,7 +32,7 @@ a list consisting of:
 \item{se}{robust standard errors}
 }
 \description{
-Estimates the parameters of an \code{\link{Msm}}(k) model for a given vector of returns.
+Estimates the parameters of a univariate Markov Switching Multifractal (MSM) model for a given vector of returns.
 }
 \note{
 Use the \code{\link{summary.msmmodel}} function to print summary results of the MSM model.
@@ -41,7 +41,7 @@ Use \code{\link{plot.msmmodel}} function to plot the fitted conditional volatili
 }
 \examples{
 data("calvet2004data")
-ret <- na.omit(as.matrix(dat$caret))*100
+ret <- na.omit(as.matrix(calvet2004data$caret))*100
 fit <- Msm(ret)
 fit2 <- Msm(ret, kbar=2, n.vol=252, nw.lag=2)
 summary(fit2)

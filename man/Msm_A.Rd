@@ -2,7 +2,7 @@
 % Please edit documentation in R/Msm_A.R
 \name{Msm_A}
 \alias{Msm_A}
-\title{Calculates transition probability matrix for MSM(k) model.}
+\title{Transition Probability Matrix for \code{\link{Msm}}(k) Model.}
 \usage{
 Msm_A(b, gamma.kbar, kbar)
 }
