@@ -14,7 +14,8 @@ Depends:
     Rsolnp,
     truncnorm,
     reshape2,
-    ggplot2
+    ggplot2,
+    plyr
 Imports:
     Rcpp (>= 0.12.7),
     stats
