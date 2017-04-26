@@ -17,7 +17,7 @@
 #' \item{lb2}{lower bound on stage 2 parameters}
 #' \item{ub2}{upper bound on stage 2 parameters}
 #'
-#' @export
+
 Bmsm_parameter_check <- function(dat, kbar, x0, n){
 
   # Check for valid data entry:
