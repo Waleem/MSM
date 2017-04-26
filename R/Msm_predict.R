@@ -1,4 +1,4 @@
-#' Performs prediction for MSM model.
+#' Prediction for \code{\link{Msm}} Model.
 #'
 #' Performs prediction after fitting an \code{\link{Msm}}(k) model.
 #'
@@ -17,13 +17,14 @@
 #'
 #' @examples
 #' data("calvet2004data")
-#' ret <- na.omit(as.matrix(dat$caret))*100
+#' ret <- na.omit(as.matrix(calvet2004data$caret))*100
 #' fit <- Msm(ret, kbar=2, n.vol=252, nw.lag=2)
-#' Msm_predict(fit$g.m, fit$para[4]*sqrt(252), 252, fit$filtered, fit$A, 5)
+#' vol <- Msm_predict(fit$g.m, fit$para[4]*sqrt(252), 252, fit$filtered, fit$A, 5)
 #' @export
 Msm_predict <- function(g.m, sigma, n, P, A, h=NULL){
 
   if (!is.null(h) && h<1) stop("h must be a non-zero integer")
+  if (!is.null(h)) h <- floor(h)
 
   sigma  <- sigma/sqrt(n)
 
@@ -36,20 +37,20 @@ Msm_predict <- function(g.m, sigma, n, P, A, h=NULL){
   #if(!is.null(h) || !is.null(A)){
   if(!is.null(h)){
 
-    p.hat  <- matrix(P[nrow(P),],1,ncol(P)) %*% A^h
-    vol    <- sigma*p.hat%*% t(g.m)
+    p.hat  <- matrix(P[nrow(P),],1,ncol(P)) %*% Msm_mat_power(A,h)
+    #vol    <- sigma*p.hat%*% t(g.m)
     vol.sq <- sigma^2*(p.hat%*% t(g.m^2))
 
   }else{
 
     #vol    <- sigma*(P %*% t(g.m))
     vol.sq <- sigma^2*(P %*% t(g.m^2))
-    vol    <- sqrt(vol.sq)
+    #vol    <- sqrt(vol.sq)
 
   }
 
   prediction <- list(
-    vol       = vol,
+    vol       = sqrt(vol.sq),
     vol.sq    = vol.sq
   )
 
