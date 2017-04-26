@@ -2,7 +2,7 @@
 % Please edit documentation in R/Msm_grad.R
 \name{Msm_grad}
 \alias{Msm_grad}
-\title{Calculates numerical gradient for MSM(k) model.}
+\title{Numerical Derivative Function for \code{\link{Msm}}(k) model.}
 \usage{
 Msm_grad(para, kbar, ret, n.vol)
 }
@@ -19,6 +19,6 @@ Msm_grad(para, kbar, ret, n.vol)
 a \eqn{N=nrow(ret)} by \eqn{4} matrix of numerical derivatives.
 }
 \description{
-Calculates numerical gradient for \code{\link{Msm}}(k) model.
+Calculates the numerical derivative for \code{\link{Msm}}(k) model.
 }
 

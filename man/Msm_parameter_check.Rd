@@ -2,7 +2,7 @@
 % Please edit documentation in R/Msm_parameter_check.R
 \name{Msm_parameter_check}
 \alias{Msm_parameter_check}
-\title{Performs boundary checks on Msm model parameters.}
+\title{Boundary Checks on \code{\link{Msm}} Model Parameters.}
 \usage{
 Msm_parameter_check(dat, kbar, x0)
 }
@@ -19,14 +19,14 @@ a list consisting of:
 \item{kbar}{number of frequency components}
 \item{start.value}{is the initial parameter values passed to Msm}
 \item{lb}{lower bound on parameters}
-\item{ub}{lower bound on parameters}
+\item{ub}{upper bound on parameters}
 }
 \description{
-Performs boundary checks on Msm model parameter values.
+Performs boundary checks on \code{\link{Msm}} model parameter values.
 }
 \examples{
 data("calvet2004data")
-ret <- na.omit(as.matrix(dat$caret))*100
+ret <- na.omit(as.matrix(calvet2004data$caret))*100
 Msm_parameter_check (ret,2,c(1.5,10,.1,4))
 
 }

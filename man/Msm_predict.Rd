@@ -2,7 +2,7 @@
 % Please edit documentation in R/Msm_predict.R
 \name{Msm_predict}
 \alias{Msm_predict}
-\title{Performs prediction for MSM model.}
+\title{Prediction for \code{\link{Msm}} Model.}
 \usage{
 Msm_predict(g.m, sigma, n, P, A, h = NULL)
 }
@@ -18,7 +18,7 @@ If data is monthly, then set n.vol to 12. If data is quarterly, then n.vol shoul
 
 \item{A}{is the transition matrix returned by Msm.}
 
-\item{is}{an optional parameter. When h is null, the fitted volatility values are returned.
+\item{h}{is an optional parameter. When h is null, the fitted volatility values are returned.
 When h>0, then an h-step ahead volatility forecast is returned.}
 }
 \value{
@@ -31,8 +31,8 @@ Performs prediction after fitting an \code{\link{Msm}}(k) model.
 }
 \examples{
 data("calvet2004data")
-ret <- na.omit(as.matrix(dat$caret))*100
+ret <- na.omit(as.matrix(calvet2004data$caret))*100
 fit <- Msm(ret, kbar=2, n.vol=252, nw.lag=2)
-Msm_predict(fit$g.m, fit$para[4]*sqrt(252), 252, fit$filtered, fit$A, 5)
+vol <- Msm_predict(fit$g.m, fit$para[4]*sqrt(252), 252, fit$filtered, fit$A, 5)
 }
 

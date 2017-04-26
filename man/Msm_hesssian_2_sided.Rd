@@ -2,7 +2,7 @@
 % Please edit documentation in R/Msm_hessian_2_sided.R
 \name{Msm_hesssian_2_sided}
 \alias{Msm_hesssian_2_sided}
-\title{Calculates 2-sided finite difference hessian for MSM(k) model.}
+\title{Finite Difference Hessian for \code{\link{Msm}}(k) model.}
 \usage{
 Msm_hesssian_2_sided(para, kbar, ret, n.vol)
 }

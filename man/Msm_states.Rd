@@ -2,7 +2,7 @@
 % Please edit documentation in R/Msm_states.R
 \name{Msm_states}
 \alias{Msm_states}
-\title{Calculates state values for MSM model.}
+\title{Volatility State Vector For \code{\link{Msm}} model.}
 \usage{
 Msm_states(m0, kbar)
 }

@@ -5,20 +5,8 @@
 \title{Internal routine used to calculate robust newey-West standard error for MSM model.}
 \usage{
 Msm_varcovvar(para, kbar, ret, n.vol, lag = 0)
-
-Msm_varcovvar(para, kbar, ret, n.vol, lag = 0)
 }
 \arguments{
-\item{para}{is a vector of parameters returned by \code{\link{Msm}}.}
-
-\item{kbar}{is the number of frequency components in the \code{\link{Msm}}(k) model.}
-
-\item{ret}{is a column matrix of returns.}
-
-\item{n.vol}{is the number of trading days in a year, if data is on a daily frequency. Default is 252.}
-
-\item{lag}{is the number of lags.}
-
 \item{para}{is a vector of parameters returned by \code{\link{Msm}}.}
 
 \item{kbar}{is the number of frequency components in the \code{\link{Msm}}(k) model.}
@@ -31,12 +19,8 @@ Msm_varcovvar(para, kbar, ret, n.vol, lag = 0)
 }
 \value{
 a list of standard error ingredients.
-
-a list of standard error ingredients.
 }
 \description{
-Internal routine used to calculate robust newey-West standard error for MSM model.
-
 Internal routine used to calculate robust newey-West standard error for MSM model.
 }
 

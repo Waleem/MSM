@@ -2,7 +2,7 @@
 % Please edit documentation in R/Msm_std_err.R
 \name{Msm_std_err}
 \alias{Msm_std_err}
-\title{Calculates standard error for MSM model.}
+\title{Standard Error for \code{\link{Msm}} Model.}
 \usage{
 Msm_std_err(para, kbar, ret, n.vol, lag = 0)
 }
@@ -21,6 +21,6 @@ Msm_std_err(para, kbar, ret, n.vol, lag = 0)
 a list of standard error ingredients.
 }
 \description{
-Calculates standard error for MSM model.
+Calculates standard error for \code{\link{Msm}} model.
 }
 
