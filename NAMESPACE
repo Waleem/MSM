@@ -1,6 +1,7 @@
 exportPattern("^[[:alpha:]]+")
 importFrom(Rcpp, evalCpp)
 import(ggplot2)
+import(truncnorm)
 import(Rsolnp)
 import(reshape2)
 useDynLib(MSM)
