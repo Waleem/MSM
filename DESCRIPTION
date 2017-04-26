@@ -20,7 +20,8 @@ Depends:
     scales,
     munsell,
     colorspace,
-    lazyeval
+    lazyeval,
+    tibble
 Imports:
     Rcpp (>= 0.12.7),
     stats,
