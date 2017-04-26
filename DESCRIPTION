@@ -16,7 +16,8 @@ Depends:
     reshape2,
     ggplot2,
     plyr,
-    gtable
+    gtable,
+    scales
 Imports:
     Rcpp (>= 0.12.7),
     stats
