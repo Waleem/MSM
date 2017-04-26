@@ -1,6 +1,6 @@
 exportPattern("^[[:alpha:]]+")
 importFrom(Rcpp, evalCpp)
-import(ggplot2)
+importFrom(ggplot2, aes,ggplot,geom_line,guides,xlab,ylab,ggtitle,facet_wrap,theme,element_blank)
 import(truncnorm)
 import(Rsolnp)
 import(reshape2)
