@@ -19,7 +19,8 @@ Depends:
     gtable,
     scales,
     munsell,
-    colorspace
+    colorspace,
+    lazyeval
 Imports:
     Rcpp (>= 0.12.7),
     stats,
