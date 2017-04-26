@@ -1,9 +1,9 @@
-#' Fits an \code{\link{Msm}}(k) model to returns.
+#' Univariate Markov Switching Multifractal (MSM) Model.
 #'
-#' Estimates the parameters of an \code{\link{Msm}}(k) model for a given vector of returns.
+#' Estimates the parameters of a univariate Markov Switching Multifractal (MSM) model for a given vector of returns.
 #'
 #' @param ret is a column matrix of returns.
-#' @param kbar is the number of frequency components in the \code{\link{Msm}}(k) model. Default is 1.
+#' @param kbar is the number of frequency components in the Msm(k) model. Default is 1.
 #' @param n.vol is the number of trading days in a year, if data is on a daily frequency. Default is 252.
 #' If data is monthly, then set n.vol to 12. If data is quarterly, then n.vol should be 4.
 #' @param para0 is the initial parameter values for optimization. Default is NULL.
@@ -32,7 +32,7 @@
 #'
 #' @examples
 #' data("calvet2004data")
-#' ret <- na.omit(as.matrix(dat$caret))*100
+#' ret <- na.omit(as.matrix(calvet2004data$caret))*100
 #' fit <- Msm(ret)
 #' fit2 <- Msm(ret, kbar=2, n.vol=252, nw.lag=2)
 #' summary(fit2)
@@ -50,7 +50,7 @@ Msm <- function(ret, kbar =1 , n.vol = 252, para0=NULL, nw.lag =0){
   ub   <- msm.check$ub
 
   log <- capture.output({
-    msm.fit <- nloptr::slsqp(x0, fn = Msm_ll2, lower = lb, upper = ub, kbar = kbar, dat = ret, n.vol = n.vol)
+    msm.fit <- Rsolnp::solnp(x0, fun = Msm_ll2, LB = lb, UB = ub, kbar = kbar, dat = ret, n.vol = n.vol)
   })
 
 
@@ -142,7 +142,14 @@ print.summary.msmmodel <- function(x, ...)
 }
 
 predict.msmmodel <- function(object, h=NULL,...){
-  smoothed.p <- Msm_smooth_cpp(object$A,object$filtered)
+
+
+  if (!is.null(h)){
+    smoothed.p = object$filtered
+  } else{
+    smoothed.p <- Msm_smooth_cpp(object$A,object$filtered)
+  }
+
   pred <- Msm_predict(object$g.m, object$para[4], object$n, smoothed.p, object$A, h)
   return(pred)
 }
