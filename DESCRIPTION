@@ -18,7 +18,8 @@ Depends:
     plyr,
     gtable,
     scales,
-    munsell
+    munsell,
+    colorspace
 Imports:
     Rcpp (>= 0.12.7),
     stats
