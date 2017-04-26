@@ -12,6 +12,7 @@ Description: It fits Markov Switching Multifractal Volatility model
 Depends:
     R (>= 3.1),
     Rsolnp,
+    truncnorm,
     reshape2,
     ggplot2
 Imports:
