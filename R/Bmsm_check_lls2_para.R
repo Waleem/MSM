@@ -7,6 +7,7 @@
 #'
 #' @return a 3 by 1 vector of \code{\link{Bmsm}} parameters.
 #'
+
 Bmsm_check_lls2_para <- function(x){
 
   if (x[1]>=1)  x[1] <- 0.9999
